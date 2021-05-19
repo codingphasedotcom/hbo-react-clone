@@ -1,0 +1,59 @@
+.side-nav{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: black;
+  min-height: 100vh;
+  padding: 50px;
+  z-index: 11;
+  transform: translate3d(-350px, 0, 0);
+  transition: transform .4s ease-in-out;
+  &--active{
+    transform: translate3d(0,0,0);
+    
+  }
+  &__close-btn{
+    position: absolute;
+    left: 290px;
+    top: 0;
+    height: 50px;
+    width: 50px;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+  }
+  &__divider{
+    width: 100%;
+    background: rgb(80,80,80);
+    height: 2px;
+    margin: 20px 0;
+  }
+  &__main{
+    width: 250px;
+  }
+  li{
+    opacity: 0;
+    transition: opacity .4s ease-in-out;
+    a{
+      color: rgb(80,80,80);
+      font-size: 1.5rem;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 1rem;
+      transition: color .2s ease-in-out;
+      &.active, &:hover{
+        font-weight: 500;
+        color:white;
+      }
+    }
+  }
+  @for $i from 0 through 20{
+    &--active li:nth-child(#{$i + 1}){
+      opacity: 1;
+      transition-delay: 0.15s * $i;
+    }
+  }
+}
