@@ -4,9 +4,7 @@ import { useStateContext } from "../components/HBOProvider";
 import { useRouter } from "next/router";
 import MainLayout from "../components/Layouts/MainLayout";
 import FeaturedMedia from "../components/UI/FeaturedMedia/FeaturedMedia";
-import ForYouList from "../components/UI/ForYouList/ForYouList";
-import JustAdded from "../components/UI/JustAdded/JustAdded";
-import PosterView from "../components/UI/PosterView/PosterView";
+import MediaRow from "../components/UI/MediaRow/MediaRow";
 import AuthCheck from '../components/AuthCheck'
 
 export default function Home() {
@@ -16,9 +14,13 @@ export default function Home() {
 	return AuthCheck(
 		<MainLayout>
 			<FeaturedMedia />
-			<ForYouList />
-			<JustAdded />
-			<PosterView />
+      <MediaRow title="Movies" type="large-v" endpoin='api/movies/234' />
+      {/* <MediaRow title="Series" type="small-h" endpoin='api/movies/234' />
+      <MediaRow title="Action" type="small-v" endpoin='api/movies/234' />
+      <MediaRow title="Horror" type="small-v" endpoin='api/movies/234' />
+      <MediaRow title="Animations" type="large-h" endpoin='api/movies/234' />
+      <MediaRow title="Sci-fi" type="small-v" endpoin='api/movies/234' /> */}
+			
 		</MainLayout>
 	);
 }

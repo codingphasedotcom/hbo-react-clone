@@ -5,7 +5,7 @@ const Account = (props) => {
 	const loopComp = (comp, digit) => {
 		let thumbnails = [];
 		for (let index = 1; index <= digit; index++) {
-			thumbnails.push(comp);
+			thumbnails.push(<comp key={index}/>);
 		}
 
 		return thumbnails;
