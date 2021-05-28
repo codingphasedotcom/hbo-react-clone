@@ -1,65 +1,81 @@
-
+import {useState, useEffect} from 'react';
+import axios from 'axios';
 
 const CastInfo = (props) => {
+  const [loadingData, setLoadingData] = useState(true);
+	const [credits, setCredits] = useState([]);
+
+	// /discover/movie?with_genres=28&primary_release_year=2021
+	useEffect(() => {
+		axios
+			.get(
+				`https://api.themoviedb.org/3/movie/${props.mediaId}/credits?api_key=1db7688f317e15dd2ee2933dae838634&language=en-US`,
+			)
+			.then(function (response) {
+				setCredits(response.data);
+				setLoadingData(false);
+				// handle success
+				console.log("Success Response For cast and crew ");
+				console.log(response);
+			})
+			.catch(function (error) {
+				// handle error
+				console.log("Error Response For error for cast and crew");
+				console.log(error);
+			});
+	}, []);
+
+  const showCast = () => {
+    if(loadingData !== true){
+      return credits.cast.map((item) => {
+        return(
+          <ul className="cast-info__crew">
+            <li>
+              {item.character}
+            </li>
+            <li>
+              {item.name}
+            </li>
+          </ul>
+        )
+      })
+    } else {
+      return(<div>Loading Cast</div>)
+    }
+  }
+
+  const showCrew = () => {
+    if(loadingData !== true){
+      return credits.crew.map((item) => {
+        return(
+          <ul className="cast-info__crew">
+            <li>
+              {item.job}
+            </li>
+            <li>
+              {item.name}
+            </li>
+          </ul>
+        )
+      })
+    } else {
+      return(<div>Loading Crew</div>)
+    }
+  }
+
   return(
     <div className="cast-info">
       <div className="cast-info__group-title">
-        Cast & Crew
+        Cast
       </div>
       <div className="cast-info__list">
-        <ul className="cast-info__crew">
-          <li>
-            James
-          </li>
-          <li>
-            George Lucas
-          </li>
-        </ul>
-        <ul className="cast-info__crew">
-          <li>
-            Billy
-          </li>
-          <li>
-            George Lucas
-          </li>
-        </ul>
-        <ul className="cast-info__crew">
-          <li>
-            Liu Kang
-          </li>
-          <li>
-            George Lucas
-          </li>
-        </ul>
-        <ul className="cast-info__crew">
-          <li>
-            Raul
-          </li>
-          <li>
-            George Lucas
-          </li>
-        </ul>
-        <ul className="cast-info__crew">
-          <li>
-            Samantha
-          </li>
-          <li>
-            George Lucas
-          </li>
-        </ul>
+        {showCast()}
       </div>
       <div className="cast-info__group-title">
-        Director
+        Crew
       </div>
       <div className="cast-info__list">
-        <ul className="cast-info__crew">
-          <li>
-            James
-          </li>
-          <li>
-            George Lucas
-          </li>
-        </ul>
+        {showCrew()}
         
       </div>
     </div>
@@ -67,3 +83,8 @@ const CastInfo = (props) => {
 }
 
 export default CastInfo;
+
+
+
+
+
