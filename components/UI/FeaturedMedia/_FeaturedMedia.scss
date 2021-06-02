@@ -1,10 +1,14 @@
 .featured-media{
   background: black;
   width: 100%;
-  min-height: 700px;
+  min-height: 500px;
   height: 100vh;
   position: relative;
   overflow: hidden;
+  &--single{
+    min-width: none;
+    height: 50vh;
+  }
   &__video{
     position: absolute;
     z-index: 1;
