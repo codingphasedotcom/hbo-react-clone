@@ -39,7 +39,7 @@ const MediaRow = (props) => {
 		return loadingData
 			? loopComp(<Skeleton />, 10)
 			: movies.map((movie) => {
-					return <Thumbnail movieData={movie} type={type} />;
+					return <Thumbnail movieData={movie} type={type} mediaType={props.mediaType} />;
 			  });
 	};
 
@@ -74,7 +74,7 @@ const Thumbnail = (props) => {
 		}
 	};
 	return (
-		<Link href={`/movie/${props.movieData.id}`}>
+		<Link href={`/${props.mediaType === 'movie' ? 'movie' : 'tv'}/${props.movieData.id}`}>
 			<a>
 				<div className="media-row__thumbnail">
 					<img
@@ -99,4 +99,7 @@ const Skeleton = () => {
 	);
 };
 
+MediaRow.defaultProps = {
+	mediaType: 'movie'
+}
 export default MediaRow;

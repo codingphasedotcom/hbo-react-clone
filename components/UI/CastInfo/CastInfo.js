@@ -4,12 +4,12 @@ import axios from 'axios';
 const CastInfo = (props) => {
   const [loadingData, setLoadingData] = useState(true);
 	const [credits, setCredits] = useState([]);
-
+//  https://api.themoviedb.org/3/tv/63174/credits?api_key=1db7688f317e15dd2ee2933dae838634&language=en-US
 	// /discover/movie?with_genres=28&primary_release_year=2021
 	useEffect(() => {
 		axios
 			.get(
-				`https://api.themoviedb.org/3/movie/${props.mediaId}/credits?api_key=1db7688f317e15dd2ee2933dae838634&language=en-US`,
+				`https://api.themoviedb.org/3/${props.mediaType === 'movie' ? 'movie' : 'tv'}/${props.mediaId}/credits?api_key=1db7688f317e15dd2ee2933dae838634&language=en-US`,
 			)
 			.then(function (response) {
 				setCredits(response.data);
