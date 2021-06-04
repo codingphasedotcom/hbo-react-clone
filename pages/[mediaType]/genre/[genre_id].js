@@ -27,8 +27,9 @@ export default function MediaTypePage(props) {
           offset={-200}
           placeholder={<Placeholders title={item.name} type={thumbType}  />}>
           <MediaRow
+            title={item.name}
             type={thumbType}
-            endpoint={`discover/${props.query.mediaType}?with_genres=${props.query.genre_id}&sort_by=popularity.desc&primary_release_year=2021&page=${index+1}`}
+            endpoint={`discover/${props.query.mediaType}?with_genres=${props.query.genre_id}&sort_by=popularity.desc&primary_release_year=2021&page=${index + 1}`}
           />
         </LazyLoad>
       </div>
@@ -45,7 +46,7 @@ export default function MediaTypePage(props) {
 				linkUrl={`/${props.query.mediaType}/${props.featuredData.id}`}
 				type="single"
 			/>
-      <GenreNav mediaType={props.query.MediaType} genresData={props.genresData} />
+      <GenreNav mediaType={props.query.mediaType} genresData={props.genresData} />
 
 			{showRandomMedia()}
 
