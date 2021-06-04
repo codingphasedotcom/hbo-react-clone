@@ -1,28 +1,31 @@
-import {useState, useEffect} from 'react';
-import axios from 'axios';
-import Link from "next/link";
+import {useStateContext} from '../../HBOProvider'
+import Link from 'next/link';
+import { useState } from 'react';
 
 const GenreNav = (props) => {
+	// const globalState = useStateContext();
 	const [activeNav, setActiveNav] = useState(false);
+	setTimeout(() => setActiveNav(true), 100);
 
-	setTimeout(() => setActiveNav(true), 100)
 	return (
 		<ul className={`genre-nav ${activeNav ? 'genre-nav--active' : ''}`}>
-			<GenreList genresData={props.genresData} mediaType={props.mediaType} />
+
+				<GenreList genresData={props.genresData} mediaType={props.mediaType} />
+				
 		</ul>
 	);
 };
 
 const GenreList = (props) => {
-	console.log('props', props)
-	// return <h1>test</h1>
 	return props.genresData.map((item) => {
-		return (
-			<li class="--active" key={item.id}>
-					<Link href="/">
-						<a >{item.name}</a>
-					</Link>
-				</li>
+		return(
+			<li key={item.id}>
+				<Link href="/">
+					<a>
+						{item.name}
+					</a>
+				</Link>
+			</li>
 		)
 	})
 }

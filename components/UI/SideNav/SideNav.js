@@ -1,9 +1,8 @@
 import {useStateContext} from '../../HBOProvider'
-import Link from "next/link";
+import Link from 'next/link';
 
 const SideNav = (props) => {
 	const globalState = useStateContext();
-
 	return (
 		<div className={`side-nav ${globalState.sideNavOpen ? 'side-nav--active': ''}`}>
 			<div className="side-nav__close-btn" onClick={() => globalState.setSideNavOpenAction(false)}>
@@ -12,21 +11,28 @@ const SideNav = (props) => {
 			<ul className="side-nav__main">
 				<li onClick={() => globalState.setSideNavOpenAction(false)}>
 					<Link href="/">
-					<a  className="active">
-						Home
-					</a>
+						<a>
+							Home
+						</a>
 					</Link>
 				</li>
 				<li onClick={() => globalState.setSideNavOpenAction(false)}>
 					<Link href="/movie">
-						<a>Movies</a>
+						<a>
+							Movies
+						</a>
 					</Link>
 				</li>
 				<li onClick={() => globalState.setSideNavOpenAction(false)}>
 					<Link href="/tv">
-						<a>Series</a>
+						<a>
+							Series
+						</a>
 					</Link>
 				</li>
+				
+				
+				
 			</ul>
 			
 		</div>

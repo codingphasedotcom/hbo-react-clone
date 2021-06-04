@@ -9,48 +9,48 @@ import AuthCheck from "../../components/AuthCheck";
 import LazyLoad from "react-lazyload";
 import Placeholders from "../../components/UI/Placeholders/PlaceHolders";
 import GenreNav from "../../components/UI/GenreNav/GenreNav";
-import axios from "axios";
+import axios from 'axios';
 import { shuffleArray } from "../../components/utilities";
+
 
 export default function MediaTypePage(props) {
 	const globalState = useStateContext();
 	const router = useRouter();
-	const thumbTypes = ["large-v", "small-v", "large-h", "small-h"];
 
-	useEffect(() => {}, []);
-	console.log("props", props);
-
-	const showRandomMedia = () => {
-		let thumbType;
-		return props.genresData.map((item) => {
-			thumbType = shuffleArray(thumbTypes)[0];
-			return (
-				<LazyLoad
-					key={item.id}
-					offset={-200}
-					placeholder={<Placeholders title={item.name} type={thumbType} />}>
-					<MediaRow
-						title={item.name}
-						type={thumbType}
-						endpoint={`discover/${props.query.mediaType}?with_genres=${item.id}&primary_release_year=2021`}
-					/>
-				</LazyLoad>
-			);
-		});
-	};
+  const showRandomMedia = () => {
+    let thumbType;
+    return props.genresData.map((item) => {
+      thumbType = shuffleArray(globalState.thumbTypes)[0]
+      return(
+        <div key={item.id}>
+          <LazyLoad
+          offset={-200}
+          placeholder={<Placeholders title={item.name} type={thumbType}  />}>
+          <MediaRow
+            title={item.name}
+            type={thumbType}
+            endpoint={`discover/${props.query.mediaType}?with_genres=${item.id}&sort_by=popularity.desc&primary_release_year=2021`}
+          />
+        </LazyLoad>
+      </div>
+      )
+    })
+  }
+  console.log('props index', `/${props.query.mediaType}/${props.featuredData.id}`)
 	return AuthCheck(
 		<MainLayout>
 			<FeaturedMedia
-        title={props.query.mediaType === 'movie' ? props.featuredData.title : props.featuredData.name}
 				mediaUrl={`https://image.tmdb.org/t/p/w1280${props.featuredData.backdrop_path}`}
+				title={props.query.mediaType === 'movie' ? props.featuredData.title : props.featuredData.name}
+				
 				linkUrl={`/${props.query.mediaType}/${props.featuredData.id}`}
 				type="single"
 			/>
-			<GenreNav
-				mediaType={props.query.mediaType}
-				genresData={props.genresData}
-			/>
+      <GenreNav mediaType={props.query.MediaType} genresData={props.genresData} />
+
 			{showRandomMedia()}
+
+			
 		</MainLayout>,
 	);
 }
@@ -71,7 +71,6 @@ export async function getServerSideProps(context) {
 		console.log("error");
 		console.log(error);
 	}
-	console.log(genresData);
 	return {
 		props: {
 			genresData: genresData.data.genres,
@@ -80,3 +79,4 @@ export async function getServerSideProps(context) {
 		}, // will be passed to the page component as props
 	};
 }
+
