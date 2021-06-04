@@ -2,9 +2,10 @@ import { useRouter } from 'next/router'
 
 const FeaturedMedia = (props) => {
   const router = useRouter()
+  console.log('props featured', props)
 
   const clickedPlay = () => {
-    router.push(props.linkUrl)
+    router.push(`${props.linkUrl}`)
     console.log('send user to media page ' + props.mediaUrl)
   }
   const showMedia = () => {

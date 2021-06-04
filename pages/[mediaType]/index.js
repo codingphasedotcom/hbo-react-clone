@@ -16,7 +16,27 @@ import { shuffleArray } from "../../components/utilities";
 export default function MediaTypePage(props) {
 	const globalState = useStateContext();
 	const router = useRouter();
-	useEffect(() => {}, []);
+
+  const showRandomMedia = () => {
+    let thumbType;
+    return props.genresData.map((item) => {
+      thumbType = shuffleArray(globalState.thumbTypes)[0]
+      return(
+        <div key={item.id}>
+          <LazyLoad
+          offset={-200}
+          placeholder={<Placeholders title={item.name} type={thumbType}  />}>
+          <MediaRow
+            title={item.name}
+            type={thumbType}
+            endpoint={`discover/${props.query.mediaType}?with_genres=${item.id}&sort_by=popularity.desc&primary_release_year=2021`}
+          />
+        </LazyLoad>
+      </div>
+      )
+    })
+  }
+  console.log('props index', `/${props.query.mediaType}/${props.featuredData.id}`)
 	return AuthCheck(
 		<MainLayout>
 			<FeaturedMedia
@@ -27,15 +47,8 @@ export default function MediaTypePage(props) {
 				type="single"
 			/>
       <GenreNav mediaType={props.query.MediaType} genresData={props.genresData} />
-			<LazyLoad
-				offset={-400}
-				placeholder={<Placeholders title="Movies" type="large-v" />}>
-				<MediaRow
-					title="Movies"
-					type="large-v"
-					endpoint="discover/movie?sort_by=popularity.desc&primary_release_year=2021"
-				/>
-			</LazyLoad>
+
+			{showRandomMedia()}
 
 			
 		</MainLayout>,
