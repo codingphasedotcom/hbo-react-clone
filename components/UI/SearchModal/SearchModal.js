@@ -23,6 +23,15 @@ const SearchModal = (props) => {
 			console.log(error);
 		}
 	}, [])
+
+
+	useEffect(() => {
+		if(globalState.searchOpen) {
+			document.body.style.overflowY = 'hidden';
+		} else {
+			document.body.style.overflowY = 'auto';
+		}
+  }, [globalState.searchOpen])
 	
 
 	const handleInput = async (e) => {
@@ -75,12 +84,12 @@ const SearchModal = (props) => {
 const PopularResults = (props) => {
 	return props.popData.map((item, index) => {
 		return(
-			<div className="search-modal__thumbnail" key={index}>
+			<a href={`/movie/${item.id}`} className="search-modal__thumbnail" key={index}>
 				<img src={`https://image.tmdb.org/t/p/w185${item.poster_path}`} />
 				<div className="search-modal__top-layer">
 					<i className="fas fa-play" />
 				</div>
-			</div>
+			</a>
 		)
 	})
 }
@@ -91,14 +100,12 @@ const SearchResults = (props) => {
 	
 	return props.searchData.map((item, index) => {
 		return (
-			<div className="search-modal__thumbnail" key={index}>
-				<a href={`/${item.media_type}/${item.id}`}>
-					<img src={`https://image.tmdb.org/t/p/w185${item.poster_path}`} />
-					<div className="search-modal__top-layer">
-						<i className="fas fa-play" />
-					</div>
-				</a>
-			</div>
+			<a href={`/${item.media_type}/${item.id}`} className="search-modal__thumbnail" key={index}>
+				<img src={`https://image.tmdb.org/t/p/w185${item.poster_path}`} />
+				<div className="search-modal__top-layer">
+					<i className="fas fa-play" />
+				</div>
+			</a>
 		)
 	}) 
 	

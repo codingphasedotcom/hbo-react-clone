@@ -27,6 +27,7 @@ export default function MediaTypePage(props) {
           offset={-200}
           placeholder={<Placeholders title={item.name} type={thumbType}  />}>
           <MediaRow
+						
             title={item.name}
             type={thumbType}
             endpoint={`discover/${props.query.mediaType}?with_genres=${props.query.genre_id}&sort_by=popularity.desc&primary_release_year=2021&page=${index + 1}`}
