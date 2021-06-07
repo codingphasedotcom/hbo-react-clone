@@ -10,6 +10,8 @@
   visibility: hidden;
   transition: opacity .4s ease-in-out;
   z-index: 13;
+  overflow: auto;
+
   
   &--active{
     visibility: visible;
@@ -59,6 +61,7 @@
     position: relative;
     margin-right: 10px;
     opacity: 0;
+    margin-bottom: 10px;
     img {
       width: 240px;
       height: 360px;
