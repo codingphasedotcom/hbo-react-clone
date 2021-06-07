@@ -10,6 +10,8 @@
   visibility: hidden;
   transition: opacity .4s ease-in-out;
   z-index: 13;
+  overflow: auto;
+
   
   &--active{
     visibility: visible;
@@ -22,6 +24,7 @@
     margin-bottom: 3rem;
   }
   &__input{
+    color: white;
     background: transparent;
     font-size: 4rem;
     border: none;
@@ -58,6 +61,7 @@
     position: relative;
     margin-right: 10px;
     opacity: 0;
+    margin-bottom: 10px;
     img {
       width: 240px;
       height: 360px;
