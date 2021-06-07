@@ -23,7 +23,7 @@ const CastInfo = (props) => {
 				console.log("Error Response For error for cast and crew");
 				console.log(error);
 			});
-	}, []);
+	}, [props.updateData]);
 
   const showCast = () => {
     if(loadingData !== true){
