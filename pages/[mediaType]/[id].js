@@ -39,6 +39,8 @@ export default function SingleMediaPage(props) {
 				location="In theaters and on HBO MAX. Streaming throughout May 23."
 				linkUrl="/movies/id"
 				type="single"
+				mediaType={props.query.mediaType}
+				mediaId={props.query.id}
 			/>
 			<LazyLoad
 				offset={-400}

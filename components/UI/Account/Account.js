@@ -1,5 +1,7 @@
+import ls from "local-storage";
 import { useEffect } from "react";
 import { useStateContext } from "../../HBOProvider";
+
 
 const Account = (props) => {
 	const globalState = useStateContext();
@@ -13,6 +15,33 @@ const Account = (props) => {
 		}
 	}, [globalState.accountModalOpen])
 
+	const watchMedia = (url) => {
+			router.push(url)
+			console.log('send user to media page ' + props.mediaUrl)
+	}
+
+	const showWatchList = () => {
+		
+		return globalState.watchList.map((item, index) => {
+			console.log(item)
+			console.log(item.mediaId)
+			return(
+				<div className="account__watch-video" key={index}>
+					<img src={item.mediaUrl} />
+					<div className="account__watch-overlay">
+						<div className="account__watch-buttons">
+							<div className="account__watch-circle" onClick={watchMedia}>
+								<i className="fas fa-play" />
+							</div>
+							<div className="account__watch-circle" onClick={() => globalState.removeFromList(item.mediaId)}>
+								<i className="fas fa-times" />
+							</div>
+						</div>
+					</div>
+				</div>
+			)
+		})
+	}
 	return (
 		<div
 			className={`account ${
@@ -21,19 +50,7 @@ const Account = (props) => {
 			<div className="account__details">
 				<div className="account__title">My List</div>
 				<div className="account__watch-list">
-					<div className="account__watch-video">
-							<img src="https://cdn.shopify.com/s/files/1/0013/2874/2466/products/rick-and-morty-tv-invasion-poster-24-x-36-581_1024x.jpg?v=1616627934" />
-							<div className="account__watch-overlay">
-								<div className="account__watch-buttons">
-									<div className="account__watch-circle">
-										<i className="fas fa-play" />
-									</div>
-									<div className="account__watch-circle">
-										<i className="fas fa-times" />
-									</div>
-								</div>
-							</div>
-						</div>
+					{globalState.watchList !== null ? showWatchList() : ''}
 				</div>
 			</div>
 			<div className="account__menu">
