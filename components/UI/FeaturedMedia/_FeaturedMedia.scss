@@ -79,6 +79,27 @@
       cursor: pointer;
     }
   }
+  &__add-btn{
+    background: transparent;
+    color: white;
+    border: 3px solid white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    transition: background .3s ease-in-out;
+    &--hide{
+      display: none;
+    }
+    &:hover{
+      background: linear-gradient(328deg, rgba(94,158,255,1) 0%, rgba(119,30,135,1) 100%, rgba(60,38,184,1) 100%, rgba(0,0,0,1) 100%);
+      color: white;
+      cursor: pointer;
+    }
+  }
   &__info-btn{
     background: grey;
     color: white; 
