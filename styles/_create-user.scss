@@ -107,3 +107,14 @@
     opacity: 1;
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .create-user{
+    &__form{
+      flex-direction: column;
+    }
+    &__user-img{
+      margin-right: 0;
+    }
+  }
+}
