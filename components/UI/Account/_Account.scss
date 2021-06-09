@@ -101,3 +101,16 @@
     }
   }
 }
+@media only screen and (max-width: 600px) {
+  .account{
+    width: 100%;
+    overflow-y: scroll;
+    flex-direction: column;
+    &__watch-list{
+      grid-template-columns: 1fr;
+    }
+    &__menu{
+      width: 100%;
+    }
+  }
+}

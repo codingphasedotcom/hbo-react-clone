@@ -80,3 +80,11 @@
     opacity: 1;
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .login-user{
+    &__user-box:nth-child(1){
+    margin-right: 0 !important;
+    }
+  }
+}
