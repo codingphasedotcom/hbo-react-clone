@@ -2,6 +2,7 @@ import Account from "../Account/Account";
 import SearchModal from "../SearchModal/SearchModal";
 import { useStateContext } from "../../HBOProvider";
 import Link from 'next/link'
+import SideNav from "../SideNav/SideNav";
 
 const Header = (props) => {
 	const globalState = useStateContext();
@@ -33,9 +34,11 @@ const Header = (props) => {
 				<div className="top-header__user-name">Bryant</div>
 			</div>
 			<Account />
+			<SideNav />
 			<SearchModal />
 		</header>
 	);
 };
+
 
 export default Header;
