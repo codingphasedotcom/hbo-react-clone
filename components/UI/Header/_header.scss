@@ -21,7 +21,7 @@
     background-size: 100% 100%;
     height: 22px;
     width: 129px;
-    background-image: url(/img/logo.svg);
+    background-image: url('http://localhost:3000/img/logo.svg');
     transform: scale(.9);
   }
   &__left-side{

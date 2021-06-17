@@ -1,0 +1,45 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import Card from './Card';
+
+<Meta title="Components/UI/Card" component={Card} />
+
+# Card Component
+
+This is a component for testing and learning storybook.js
+
+export const Template = (args) => <Card {...args} />
+
+## Components Properties
+
+Distillery lo-fi drinking vinegar ramps helvetica glossier. Single-origin coffee raw denim franzen kinfolk selvage, umami chicharrones ugh synth beard waistcoat yuccie gochujang dreamcatcher. Hell of banjo pabst, tattooed wolf neutra green juice scenester raw denim narwhal poutine. Hexagon cliche food truck PBR&B hoodie deep v scenester slow-carb single-origin coffee pop-up. Organic 3 wolf moon swag art party lumbersexual iPhone wolf raclette post-ironic bicycle rights church-key. Cliche single-origin coffee tattooed intelligentsia, gastropub marfa chia keytar franzen celiac unicorn flannel paleo polaroid put a bird on it.
+
+<ArgsTable of={Card} />
+
+## DefaultState
+
+Distillery lo-fi drinking vinegar ramps helvetica glossier. Single-origin coffee raw denim franzen kinfolk selvage, umami chicharrones ugh synth beard waistcoat yuccie gochujang dreamcatcher. Hell of banjo pabst, tattooed wolf neutra green juice scenester raw denim narwhal poutine. Hexagon cliche food truck PBR&B hoodie deep v scenester slow-carb single-origin coffee pop-up. Organic 3 wolf moon swag art party lumbersexual iPhone wolf raclette post-ironic bicycle rights church-key. Cliche single-origin coffee tattooed intelligentsia, gastropub marfa chia keytar franzen celiac unicorn flannel paleo polaroid put a bird on it.
+
+<Canvas>
+  <Story name="DefaultState" args={
+    {
+      title: 'Pikachu',
+      imageUrl: 'https://d.newsweek.com/en/full/822411/pikachu-640x360-pokemon-anime.jpg?w=1600&h=1200&q=88&f=3ed1c0d6e3890cbc58be90f05908a8f5'
+    }
+  }>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Small
+
+Distillery lo-fi drinking vinegar ramps helvetica glossier. Single-origin coffee raw denim franzen kinfolk selvage, umami chicharrones ugh synth beard waistcoat yuccie gochujang dreamcatcher. Hell of banjo pabst, tattooed wolf neutra green juice scenester raw denim narwhal poutine. Hexagon cliche food truck PBR&B hoodie deep v scenester slow-carb single-origin coffee pop-up. Organic 3 wolf moon swag art party lumbersexual iPhone wolf raclette post-ironic bicycle rights church-key. Cliche single-origin coffee tattooed intelligentsia, gastropub marfa chia keytar franzen celiac unicorn flannel paleo polaroid put a bird on it.
+
+<Canvas>
+  <Story name="Small" args={
+    {
+      type: 'small'
+    }
+  }>
+    {Template.bind({})}
+  </Story>
+</Canvas>

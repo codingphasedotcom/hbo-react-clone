@@ -8,6 +8,7 @@ import MediaRow from "../components/UI/MediaRow/MediaRow";
 import AuthCheck from "../components/AuthCheck";
 import LazyLoad from "react-lazyload";
 import Placeholders from "../components/UI/Placeholders/PlaceHolders";
+import Card from '../components/UI/Card/Card'
 
 export default function Home() {
 	const globalState = useStateContext();
@@ -15,6 +16,7 @@ export default function Home() {
 	useEffect(() => {}, []);
 	return AuthCheck(
 		<MainLayout>
+			<Card />
 			<FeaturedMedia
 				mediaUrl="https://www.youtube.com/embed/NYH2sLid0Zc?autoplay=1&loop=1&start=16"
 				title="Mortal Kombat"

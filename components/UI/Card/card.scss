@@ -1,0 +1,24 @@
+.card{
+  max-width: 600px;
+  width: 100%;
+  padding: 10px;
+  background: white;
+  overflow: hidden;
+  &--small{
+    width: 200px;
+  }
+  &--medium{
+    width: 400px;
+  }
+  &--large{
+    width: 600px;
+  }
+  &__img{
+    width: 100%;
+    margin-bottom: 1.2rem;
+  }
+  &__title{
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+}
