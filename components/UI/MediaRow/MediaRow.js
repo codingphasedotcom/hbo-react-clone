@@ -105,6 +105,7 @@ MediaRow.propTypes = {
 	title: PropTypes.string,
 	type: PropTypes.oneOf(["small-h", "small-v", "large-h", "large-v"]),
 	endpoint: PropTypes.string,
+	mediaType: PropTypes.string,
 };
 
 MediaRow.defaultProps = {
