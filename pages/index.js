@@ -16,7 +16,6 @@ export default function Home() {
 	useEffect(() => {}, []);
 	return AuthCheck(
 		<MainLayout>
-			<Card />
 			<FeaturedMedia
 				mediaUrl="https://www.youtube.com/embed/NYH2sLid0Zc?autoplay=1&loop=1&start=16"
 				title="Mortal Kombat"

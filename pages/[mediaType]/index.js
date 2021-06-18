@@ -21,6 +21,7 @@ export default function MediaTypePage(props) {
     let thumbType;
     return props.genresData.map((item) => {
       thumbType = shuffleArray(globalState.thumbTypes)[0]
+			
       return(
         <div key={item.id}>
           <LazyLoad
@@ -29,8 +30,8 @@ export default function MediaTypePage(props) {
           <MediaRow
             title={item.name}
             type={thumbType}
+						mediaType={props.query.mediaType}
             endpoint={`discover/${props.query.mediaType}?with_genres=${item.id}&sort_by=popularity.desc&primary_release_year=2021`}
-						
           />
         </LazyLoad>
       </div>
@@ -38,6 +39,7 @@ export default function MediaTypePage(props) {
     })
   }
   console.log('props index', `/${props.query.mediaType}/${props.featuredData.id}`)
+
 	return AuthCheck(
 		<MainLayout>
 			<FeaturedMedia

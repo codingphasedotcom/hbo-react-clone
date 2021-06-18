@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { shuffleArray } from "../../utilities";
 import Link from "next/link";
+import PropTypes from "prop-types";
 
 const MediaRow = (props) => {
 	const [loadingData, setLoadingData] = useState(true);
@@ -42,7 +43,7 @@ const MediaRow = (props) => {
 					return <Thumbnail key={movie.id} movieData={movie} type={type} mediaType={props.mediaType} />;
 			  });
 	};
-
+	
 	return (
 		<div className={`media-row ${props.type}`}>
 			<h3 className="media-row__title">{props.title}</h3>
@@ -73,6 +74,7 @@ const Thumbnail = (props) => {
 			return "342";
 		}
 	};
+	
 	return (
 		<Link href={`/${props.mediaType === 'movie' ? 'movie' : 'tv'}/${props.movieData.id}`}>
 			<a>
@@ -99,7 +101,21 @@ const Skeleton = () => {
 	);
 };
 
+MediaRow.propTypes = {
+	title: PropTypes.string,
+	type: PropTypes.oneOf(["small-h", "small-v", "large-h", "large-v"]),
+	endpoint: PropTypes.string,
+};
+
 MediaRow.defaultProps = {
-	mediaType: 'movie'
-}
+	mediaType: 'movie',
+	title: "Movies",
+	type: "small-v",
+	endpoint:"discover/movie?sort_by=popularity.desc&primary_release_year=2021"
+};
+
+
+
+
+
 export default MediaRow;
